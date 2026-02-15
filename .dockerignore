@@ -1,0 +1,7 @@
+# Игнорируем модули во фронтенде
+frontend/node_modules/
+
+# Игнорируем логи и лишние файлы
+npm-debug.log
+.git
+.DS_Store

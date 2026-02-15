@@ -1,0 +1,54 @@
+### System files ###
+.DS_Store
+Thumbs.db
+
+### IDE ###
+.idea/
+.vscode/*
+!.vscode/launch.json
+*.swp
+*.swo
+.project
+.settings/
+
+### Docker ###
+.env
+.env.local
+.env.*.local
+!.env.example.local
+docker-compose.override.yml
+
+docker/nginx/log/*
+!docker/nginx/log/.gitkeep
+
+### Backend ###
+backend/.env.local
+backend/.env.test.local
+backend/.env.dev.local
+backend/vendor/
+backend/var/
+backend/public/bundles/
+backend/public/storage/
+backend/public/build/
+backend/config/jwt/
+backend/.phpunit.result.cache
+backend/tests/_output/
+backend/tests/_support/_generated/
+
+backend/composer.phar
+
+### Frontend ###
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.eslintcache
+frontend/.stylelintcache
+
