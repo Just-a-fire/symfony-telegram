@@ -50,7 +50,14 @@ class TelegramIntegration
     public function getId(): ?int { return $this->id; }
     
     public function getShop(): Shop { return $this->shop; }
-    public function setShop(Shop $shop): static { $this->shop = $shop; return $this; }
+    public function setShop(Shop $shop): static {
+        $this->shop = $shop;
+        // Устанавливаем обратную связь
+        if ($shop !== null && $shop->getTelegramIntegration() !== $this) {
+            $shop->setTelegramIntegration($this);
+        }
+        return $this;
+    }
 
     public function getBotToken(): string { return $this->botToken; }
     public function setBotToken(string $botToken): static { $this->botToken = $botToken; return $this; } // проверка в контроллере через Telegram API

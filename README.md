@@ -28,11 +28,11 @@ php bin/console doctrine:migrations:migrate --no-interaction
 php bin/console doctrine:fixtures:load --append
 ```
 
-8. Запустите проект http://localhost:3031/
+8. Запустите проект http://localhost:3030/
 
 Порт из переменной `.env` REACT_EXTERNAL_PORT
 
-9. Создайте заказ http://localhost:3003/shops/1/checkout
+9. Создайте заказ http://localhost:3030/shops/1/checkout
 
 ### Bot Token
 8325481018:AAHYqMT9IAXsDie6FSI0B_A2ipN68phZRX8
@@ -40,3 +40,24 @@ php bin/console doctrine:fixtures:load --append
 Чтобы узнать свой **Chat ID**,  перейдите [@Getmyid_bot](https://t.me/getmyid_bot) и нажмите START
 
 Чтобы не было ошибки  `chat not found` напишите в `@flowershopnotificationbot`
+
+## Запуск тестов
+
+1. **Подготовка `backend\.env.test`**. Установите переменные `BOT_TOKEN` и `CHAT_ID` (указаны выше) из `backend\.env.test.example`
+```env
+BOT_TOKEN=123456:ABCDEF
+CHAT_ID=987654321
+```
+
+2. **Подготовка тестовой базы данных**
+```bash
+php bin/console cache:clear --env=test
+# если были миграции до этого
+php bin/console doctrine:schema:drop --force --env=test
+php bin/console doctrine:migrations:migrate --env=test
+```
+
+3. **Запуск самих тестов**
+```bash
+php bin/phpunit
+```

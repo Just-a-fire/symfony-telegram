@@ -31,7 +31,9 @@ backend/public/bundles/
 backend/public/storage/
 backend/public/build/
 backend/config/jwt/
+backend/phpunit.xml
 backend/.phpunit.result.cache
+backend/bin/.phpunit.result.cache
 backend/tests/_output/
 backend/tests/_support/_generated/
 

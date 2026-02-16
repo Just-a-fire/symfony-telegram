@@ -28,4 +28,13 @@ class Shop {
     public function setName(string $name): self { $this->name = $name; return $this; }
 
     public function getTelegramIntegration(): ?TelegramIntegration { return $this->telegramIntegration; }
+    public function setTelegramIntegration(?TelegramIntegration $telegramIntegration): self {
+        $this->telegramIntegration = $telegramIntegration;
+        // Устанавливаем обратную связь
+        if ($telegramIntegration !== null && $telegramIntegration->getShop() !== $this) {
+            $telegramIntegration->setShop($this);
+        }
+
+        return $this;
+    }
 }
