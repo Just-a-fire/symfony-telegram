@@ -61,3 +61,22 @@ php bin/console doctrine:migrations:migrate --env=test
 ```bash
 php bin/phpunit
 ```
+
+## Список допущений/упрощений
+
+1. Файлы инфрастуктуры, backend и frontend лучше разделить на разные репозитории
+
+2. В docker-compose.yml настроить depends_on и healthcheck для БД
+
+3. Использовать **многоэтапную сборку (Multi-stage build)** для сборки `Docker`-образов
+
+4. Для **базы данных** использовать `internal`-сеть, а пробросы портов лучше вынести `docker-compose.override.yml` (который в `.gitignore`)
+
+5. Можно использовать **API platform** 
+
+6. Уведомления лучше отправлять в фоновом режиме (`Symfony Messenger`, `rabbitMQ`), 
+чтобы не ждать ответа от **API Telegram** при оформлении заказа
+
+7. Если нам нужно будет на PHP считать суммы заказов с копейками (хотя желательно это делать в БД), то удобно использовать расширение `ext-decimal`
+
+8. При создании миграций, чтобы не создавать типы вручную для **PostgreSQL Native ENUM**, подойдут библиотеки `doctrine-postgresql-enum`, `doctrine-enum-bundle`
