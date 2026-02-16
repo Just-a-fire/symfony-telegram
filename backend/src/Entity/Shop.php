@@ -25,10 +25,10 @@ class Shop {
     public function getId(): ?int { return $this->id; }
 
     public function getName(): string { return $this->name; }
-    public function setName(string $name): self { $this->name = $name; return $this; }
+    public function setName(string $name): static { $this->name = $name; return $this; }
 
     public function getTelegramIntegration(): ?TelegramIntegration { return $this->telegramIntegration; }
-    public function setTelegramIntegration(?TelegramIntegration $telegramIntegration): self {
+    public function setTelegramIntegration(?TelegramIntegration $telegramIntegration): static {
         $this->telegramIntegration = $telegramIntegration;
         // Устанавливаем обратную связь
         if ($telegramIntegration !== null && $telegramIntegration->getShop() !== $this) {
