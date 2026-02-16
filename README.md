@@ -35,11 +35,13 @@ php bin/console doctrine:fixtures:load --append
 9. Создайте заказ http://localhost:3030/shops/1/checkout
 
 ### Bot Token
+```
 8325481018:AAHYqMT9IAXsDie6FSI0B_A2ipN68phZRX8
+```
 
 Чтобы узнать свой **Chat ID**,  перейдите [@Getmyid_bot](https://t.me/getmyid_bot) и нажмите START
 
-Чтобы не было ошибки  `chat not found` напишите в `@flowershopnotificationbot`
+Чтобы не было ошибки `chat not found`, напишите в [@flowershopnotificationbot](https://t.me/flowershopnotificationbot)
 
 ## Запуск тестов
 
@@ -66,7 +68,7 @@ php bin/phpunit
 
 1. Файлы инфрастуктуры, backend и frontend лучше разделить на разные репозитории
 
-2. В docker-compose.yml настроить depends_on и healthcheck для БД
+2. В `docker-compose.yml` настроить `depends_on` и `healthcheck` для БД
 
 3. Использовать **многоэтапную сборку (Multi-stage build)** для сборки `Docker`-образов
 
