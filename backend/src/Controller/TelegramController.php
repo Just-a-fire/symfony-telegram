@@ -32,17 +32,18 @@ class TelegramController extends AbstractController
             if ($response->getStatusCode() !== 200) {
                 // Отключение исключений при ошибках HTTP
                 return $this->json([
+                    'status' => 'not_connected',
                     'error' => 'Invalid Telegram Bot Token',
                     'details' => $response->toArray(false)
                 ], 400);
             }
         } catch (\Exception $e) {
-            return $this->json(['error' => 'Could not verify token with Telegram'], 502);
+            return $this->json(['status' => 'not_connected', 'error' => 'Could not verify token with Telegram'], 502);
         }
         
         $shop = $em->getRepository(Shop::class)->find($shopId);
         if (!$shop) {
-            return $this->json(['error' => 'Shop not found'], 404);
+            return $this->json(['status' => 'not_connected', 'error' => 'Shop not found'], 404);
         }
         
         $integration = $shop->getTelegramIntegration() ?? new TelegramIntegration();

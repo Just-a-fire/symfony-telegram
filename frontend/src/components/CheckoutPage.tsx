@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { apiRequest } from '../api/client';
 
-import { ConnectResponse } from '../types/interfaces';
+import { ConnectResponse, OrderResponse } from '../types/interfaces';
 
 export const CheckoutPage = () => {
   const { shopId } = useParams();
@@ -27,9 +27,9 @@ export const CheckoutPage = () => {
         body: JSON.stringify(orderInfo),
       });
 
-      const result: ConnectResponse = await response.json();
+      const result: OrderResponse = await response.json();
 
-      if (response.status === 422 && result.violations) {
+      if (result.status === 422 && result.violations) {
         const errors: Record<string, string> = {};
         result.violations.forEach(v => { errors[v.propertyPath] = v.title; });
         setFieldErrors(errors);
