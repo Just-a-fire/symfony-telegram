@@ -14,7 +14,6 @@ docker-compose up -d --build
 5. Установка зависимостей
 ```bash
 docker-compose exec php sh
-cd backend/
 composer install
 ```
 
