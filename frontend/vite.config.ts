@@ -7,6 +7,6 @@ export default defineConfig({
     host: true,
     port: 5173,
     watch: { usePolling: true },
-    hmr: { clientPort: parseInt(process.env.REACT_EXTERNAL_PORT || '3031') }
+    hmr: { clientPort: parseInt(process.env.VITE_REACT_EXTERNAL_PORT || '3000') }
   }
 })
